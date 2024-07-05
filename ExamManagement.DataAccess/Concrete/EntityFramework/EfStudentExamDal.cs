@@ -12,8 +12,8 @@ namespace ExamManagement.DataAccess.Concrete.EntityFramework
             using var context = new AppDbContext();
 
             var values = filter == null
-                        ? context.StudentExams.Include(x => x.Student).Include(x => x.Exam.Subject).Skip(pageNumber * pageSize).Take(pageSize)
-                        : context.StudentExams.Include(x => x.Student).Include(x => x.Exam.Subject).Where(filter).Skip(pageNumber * pageSize).Take(pageSize);
+                        ? context.StudentExams.Include(x => x.Student.AppUser).Include(x => x.Exam.Subject).Skip(pageNumber * pageSize).Take(pageSize)
+                        : context.StudentExams.Include(x => x.Student.AppUser).Include(x => x.Exam.Subject).Where(filter).Skip(pageNumber * pageSize).Take(pageSize);
 
             if (!tracking)
                 values = values.AsNoTracking();

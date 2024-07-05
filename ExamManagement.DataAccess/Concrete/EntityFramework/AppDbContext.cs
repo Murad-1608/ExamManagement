@@ -30,10 +30,6 @@ namespace ExamManagement.DataAccess.Concrete.EntityFramework
                 new AppRole { Id = 2, Name = "Student", NormalizedName = "STUDENT" },
                 new AppRole { Id = 3, Name = "Teacher", NormalizedName = "TEACHER" });
 
-            //modelBuilder.Entity<AppUser>().HasData(new AppUser { Id = 1, UserName = "Admin", Email = "admin",PasswordHash },
-            //    new AppRole { Id = 2, Name = "Student", NormalizedName = "STUDENT" },
-            //    new AppRole { Id = 3, Name = "Teacher", NormalizedName = "TEACHER" });
-
             base.OnModelCreating(modelBuilder);
         }
 

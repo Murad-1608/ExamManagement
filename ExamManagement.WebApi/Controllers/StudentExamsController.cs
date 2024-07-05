@@ -1,39 +1,37 @@
 ﻿using ExamManagement.Business.Abstract;
-using ExamManagement.Business.DTOs.TeacherDTOs;
+using ExamManagement.Business.DTOs.SubjectDTOs;
 using ExamManagement.Business.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ExamManagement.Business.DTOs.StudentDTOs;
-using ExamManagement.Business.DTOs.SubjectDTOs;
+using ExamManagement.Business.DTOs.StudentExamDTOs;
 
 namespace ExamManagement.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [Authorize("Admin")]
-    public class SubjectsController : ControllerBase
+    public class StudentExamsController : ControllerBase
     {
-        private readonly ISubjectService _subjectService;
-        public SubjectsController(ISubjectService subjectService)
+        private readonly IStudentExamService _studentExamService;
+        public StudentExamsController(IStudentExamService studentExamService)
         {
-            _subjectService = subjectService;
+            _studentExamService = studentExamService;
         }
-
         [HttpGet]
         public IActionResult Get([FromQuery] PaginationDTO paginationDTO)
         {
-            var values = _subjectService.GetAll(paginationDTO.PageNumber, paginationDTO.PageSize);
+            var values = _studentExamService.GetAll(paginationDTO.PageNumber, paginationDTO.PageSize);
 
             return Ok(values);
         }
 
 
         [HttpPost("[action]")]
-        public IActionResult Create(CreateSubjectDTO subjectDTO)
+        public IActionResult Create(CreateStudentExamDTO studentExamDTO)
         {
 
-            _subjectService.Add(subjectDTO);
+            _studentExamService.Add(studentExamDTO);
 
             return Ok(new { Message = "Subject added", StatusCode = 200 });
         }
@@ -41,15 +39,15 @@ namespace ExamManagement.WebApi.Controllers
         [HttpGet("[action]/{id}")]
         public IActionResult Deactive(int id)
         {
-            _subjectService.Deactive(id);
+            _studentExamService.Deactive(id);
 
             return Ok(new { StatusCode = 200, Message = "Subject deleted" });
         }
 
         [HttpPut("[action]")]
-        public IActionResult Update(UpdateSubjectDTO subjectDTO)
+        public IActionResult Update(UpdateStudenExamDTO studenExamDTO)
         {
-            _subjectService.Update(subjectDTO);
+            _studentExamService.Update(studenExamDTO);
 
             return Ok(new { StatusCode = 200 });
         }

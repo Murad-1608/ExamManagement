@@ -46,7 +46,7 @@ namespace ExamManagement.Business.Concrete
 
         public List<GetAllExamDTO> GetAll(int number, int size)
         {
-            var exams = _examDal.GetAllWithPagination(false, size, number);
+            var exams = _examDal.GetAllWithPagination(false, size, number, x => x.IsActive == true);
 
             List<GetAllExamDTO> getAllExamDTOs = new List<GetAllExamDTO>();
 
