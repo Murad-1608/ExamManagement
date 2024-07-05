@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamManagement.Entity", "Entity\ExamManagement.Entity.csproj", "{7D5A35D0-EE9E-46A9-A5D7-17FC14A11EE3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamManagement.DataAccess", "ExamManagement.DataAccess\ExamManagement.DataAccess.csproj", "{984B3A68-B192-4CC5-A750-1033BBD3704F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamManagement.Business", "ExamManagement.Business\ExamManagement.Business.csproj", "{973A03FA-67B2-404E-8ED5-CE076E187469}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamManagement.Business", "ExamManagement.Business\ExamManagement.Business.csproj", "{973A03FA-67B2-404E-8ED5-CE076E187469}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamManagement.WebApi", "ExamManagement.WebApi\ExamManagement.WebApi.csproj", "{3E508E89-723F-47E0-A860-53092FA2B814}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamManagement.WebApi", "ExamManagement.WebApi\ExamManagement.WebApi.csproj", "{3E508E89-723F-47E0-A860-53092FA2B814}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamManagement.Entity", "ExamManagement.Entity\ExamManagement.Entity.csproj", "{ABF4BF0D-1DA0-426F-B317-C1B25648A75A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D5A35D0-EE9E-46A9-A5D7-17FC14A11EE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D5A35D0-EE9E-46A9-A5D7-17FC14A11EE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D5A35D0-EE9E-46A9-A5D7-17FC14A11EE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D5A35D0-EE9E-46A9-A5D7-17FC14A11EE3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{984B3A68-B192-4CC5-A750-1033BBD3704F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{984B3A68-B192-4CC5-A750-1033BBD3704F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{984B3A68-B192-4CC5-A750-1033BBD3704F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{3E508E89-723F-47E0-A860-53092FA2B814}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E508E89-723F-47E0-A860-53092FA2B814}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E508E89-723F-47E0-A860-53092FA2B814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABF4BF0D-1DA0-426F-B317-C1B25648A75A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABF4BF0D-1DA0-426F-B317-C1B25648A75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABF4BF0D-1DA0-426F-B317-C1B25648A75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABF4BF0D-1DA0-426F-B317-C1B25648A75A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

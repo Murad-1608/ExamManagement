@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Entity\ExamManagement.Entity.csproj" />
     <ProjectReference Include="..\ExamManagement.DataAccess\ExamManagement.DataAccess.csproj" />
+    <ProjectReference Include="..\ExamManagement.Entity\ExamManagement.Entity.csproj" />
   </ItemGroup>
 
 </Project>
