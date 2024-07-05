@@ -26,9 +26,16 @@ namespace ExamManagement.DataAccess.Concrete.EntityFramework
         public Student GetWithUserDetails(bool tracking, Expression<Func<Student, bool>> filter)
         {
             using var context = new AppDbContext();
+            var table = context.Students.AsQueryable();
 
-            var value = tracking ? context.Students.Include(x => x.AppUser).FirstOrDefault(filter)
-                                 : context.Students.AsNoTracking().Include(x => x.AppUser).FirstOrDefault(filter);
+            if (!tracking)
+            {
+                table = table.AsNoTracking();
+            }
+
+
+            var value = tracking ? table.Include(x => x.AppUser).FirstOrDefault(filter)
+                                 : table.Include(x => x.AppUser).FirstOrDefault(filter);
 
             return value;
         }

@@ -17,7 +17,7 @@ namespace ExamManagement.WebApi.Controllers
         public StudentExamsController(IStudentExamService studentExamService)
         {
             _studentExamService = studentExamService;
-        }
+        } 
         [HttpGet]
         public IActionResult Get([FromQuery] PaginationDTO paginationDTO)
         {

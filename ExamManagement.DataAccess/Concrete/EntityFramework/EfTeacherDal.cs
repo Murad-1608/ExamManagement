@@ -24,8 +24,14 @@ namespace ExamManagement.DataAccess.Concrete.EntityFramework
         {
             using var context = new AppDbContext();
 
-            var value = tracking ? context.Teachers.Include(x => x.AppUser).FirstOrDefault(filter)
-                                 : context.Teachers.AsNoTracking().Include(x => x.AppUser).FirstOrDefault(filter);
+            var table = context.Teachers.AsQueryable();
+
+            if (!tracking)
+            {
+                table = table.AsNoTracking();
+            }
+            var value = tracking ? table.Include(x => x.AppUser).FirstOrDefault(filter)
+                                 : table.Include(x => x.AppUser).FirstOrDefault(filter);
 
             return value;
         }
