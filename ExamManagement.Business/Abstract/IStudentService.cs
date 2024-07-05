@@ -1,6 +1,4 @@
-﻿using Entity.Concrete;
-using ExamManagement.Business.DTOs.StudentDTOs;
-
+﻿using ExamManagement.Business.DTOs.StudentDTOs;
 namespace ExamManagement.Business.Abstract
 {
     public interface IStudentService

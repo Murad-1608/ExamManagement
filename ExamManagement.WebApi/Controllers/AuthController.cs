@@ -25,5 +25,13 @@ namespace ExamManagement.WebApi.Controllers
 
             return Ok(token);
         }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> RefleshTokenLogin(string refleshToken)
+        {
+            var accessToken = await _authService.RefleshTokenLoginAsync(refleshToken);
+
+            return Ok(accessToken);
+        }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace ExamManagement.Business.Concrete
@@ -35,9 +36,24 @@ namespace ExamManagement.Business.Concrete
                                                   claims: claims);
 
             JwtSecurityTokenHandler tokenHandler = new();
+
             token.AccessToken = tokenHandler.WriteToken(securityToken);
 
+            token.RefleshToken = CreateRefleshToken();
+
             return token;
+        }
+
+        public string CreateRefleshToken()
+        {
+            byte[] number = new byte[32];
+
+            using (var random = RandomNumberGenerator.Create())
+            {
+                random.GetBytes(number);
+
+                return Convert.ToBase64String(number);
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ namespace ExamManagement.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class ExamsController : ControllerBase
     {
         private IExamService _examService;

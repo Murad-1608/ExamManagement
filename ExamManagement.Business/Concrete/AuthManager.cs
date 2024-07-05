@@ -37,10 +37,43 @@ namespace ExamManagement.Business.Concrete
             if (result.Succeeded)
             {
                 TokenDTO token = _tokenHandler.CreateAccessToken(100, roleName);
+
+                await UpdateRefleshTokenAsync(token.RefleshToken, user, token.Expiration, 100);
+
                 return token;
             }
 
             throw new UserNotFoundException("Email or password invalid");
+        }
+
+        public async Task<TokenDTO> RefleshTokenLoginAsync(string refleshToken)
+        {
+            AppUser? user = _userManager.Users.FirstOrDefault(x => x.RefleshToken == refleshToken);
+
+            if (user != null && user.RefleshTokenEndDate > DateTime.UtcNow)
+            {
+                var role = await _userManager.GetRolesAsync(user);
+
+                var token = _tokenHandler.CreateAccessToken(25, role[0]);
+
+                await UpdateRefleshTokenAsync(token.RefleshToken, user, token.Expiration, 100);
+
+                return token;
+            }
+
+            throw new UserNotFoundException("User not found");
+        }
+
+        private async Task UpdateRefleshTokenAsync(string refleshToken, AppUser user, DateTime accessTokenDate, int refleshTokenLifeTime)
+        {
+            if (user != null)
+            {
+                user.RefleshToken = refleshToken;
+                user.RefleshTokenEndDate = accessTokenDate.AddSeconds(refleshTokenLifeTime);
+                await _userManager.UpdateAsync(user);
+            }
+            else
+                throw new UserNotFoundException("User not found");
         }
     }
 }

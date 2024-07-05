@@ -7,6 +7,8 @@ namespace Entity.Concrete.Identity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string RefleshToken { get; set; }
+        public DateTime RefleshTokenEndDate { get; set; }
 
     }
 }
