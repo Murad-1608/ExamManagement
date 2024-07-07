@@ -13,12 +13,14 @@ namespace ExamManagement.DataAccess.Concrete.EntityFramework
         {
             using var context = new AppDbContext();
 
-            var values = filter == null
-                        ? context.Students.Include(x => x.AppUser).Skip(pageNumber * pageSize).Take(pageSize)
-                        : context.Students.Include(x => x.AppUser).Where(filter).Skip(pageNumber * pageSize).Take(pageSize);
+            var table = context.Students.AsQueryable();
 
-            if (tracking)
-                values = values.AsNoTracking();
+            if (!tracking)
+                table = table.AsNoTracking();
+
+            var values = filter == null
+                        ? table.Include(x => x.AppUser).Skip(pageNumber * pageSize).Take(pageSize)
+                        : table.Include(x => x.AppUser).Where(filter).Skip(pageNumber * pageSize).Take(pageSize);
 
             return values.ToList();
         }
@@ -28,14 +30,8 @@ namespace ExamManagement.DataAccess.Concrete.EntityFramework
             using var context = new AppDbContext();
             var table = context.Students.AsQueryable();
 
-            if (!tracking)
-            {
-                table = table.AsNoTracking();
-            }
-
-
             var value = tracking ? table.Include(x => x.AppUser).FirstOrDefault(filter)
-                                 : table.Include(x => x.AppUser).FirstOrDefault(filter);
+                                 : table.AsNoTracking().Include(x => x.AppUser).FirstOrDefault(filter);
 
             return value;
         }
